@@ -41,6 +41,7 @@
 We introduce <b>PointLLM, a multi-modal large language model capable of understanding colored point clouds of objects.</b> It perceives object types, geometric structures, and appearance without concerns for ambiguous depth, occlusion, or viewpoint dependency. <b>We collect a novel dataset comprising 660K simple and 70K complex point-text instruction pairs</b> to enable a two-stage training strategy. To rigorously evaluate our model's perceptual abilities and its generalization capabilities, <b>we establish two benchmarks: Generative 3D Object Classification and 3D Object Captioning, assessed through three different evaluation methods.</b>
 
 ## 🔥 News
+- [2026-03-17] The training annotations for PointLLM-V2 are available [here](https://huggingface.co/datasets/RunsenXu/PointLLM/tree/main).
 - [2025-07-06] Our improved version of PointLLM, [PointLLM-V2](https://www.computer.org/csdl/journal/tp/5555/01/11086426/28xeHHLbKX6), has been accepted by TPAMI 2025! Models, codes, and data are coming! 🎉
 - [2025-04-21] We closed our online demo because we need to use the serving machine for other purposes.
 - [2024-09-06] We have uploaded the camera-ready version of PointLLM for ECCV 2024, which includes clearer writing and additional experimental results. Please check the paper [here](https://arxiv.org/abs/2308.16911).
@@ -155,6 +156,7 @@ PointLLM/data/anno_data
 ```
 4. Note, the `PointLLM_brief_description_660K_filtered.json` is filtered from `PointLLM_brief_description_660K.json` by removing the 3000 objects we reserved as the validation set. If you want to reproduce the results in our paper, you should use the `PointLLM_brief_description_660K_filtered.json` for training. The `PointLLM_complex_instruction_70K.json` contains objects from the training set.
 5. If you want to generate the complex instructions by yourself, please refer to our paper for other details. The system prompt is at `pointllm/data/data_generation/system_prompt_gpt4_0613.txt`.
+6. [Optional] The annotations for PointLLM-V2 are available at [PointLLM_V2_Stage1_1M_filtered.json](https://huggingface.co/datasets/RunsenXu/PointLLM/resolve/main/PointLLM_V2_Stage1_1M_filtered.json) and [PointLLM_V2_Stage2_700k_filtered.json](https://huggingface.co/datasets/RunsenXu/PointLLM/resolve/main/PointLLM_V2_Stage2_700k_filtered.json). You need to download additional point clouds from Objaverse-XL [here](https://huggingface.co/datasets/tiange/Cap3D/tree/main/PointCloud_zips).
 
 #### Evaluation Data
 1. Download the referencing GT `PointLLM_brief_description_val_200_GT.json` we use for the benchmarks on Objaverse dataset [here](https://huggingface.co/datasets/RunsenXu/PointLLM/blob/main/PointLLM_brief_description_val_200_GT.json), and put it in `PointLLM/data/anno_data`. We also provide the 3000 object ids we filter during training [here](https://huggingface.co/datasets/RunsenXu/PointLLM/blob/main/val_object_ids_3000.txt) and their corresponding referencing GT [here](https://huggingface.co/datasets/RunsenXu/PointLLM/blob/main/PointLLM_brief_description_val_3000_GT.json), which can be used to evaluate on all the 3000 objects.
